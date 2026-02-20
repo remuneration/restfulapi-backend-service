@@ -1,5 +1,5 @@
 ### Description
-Backend service with **RESTful API** architecture. With implemented PostgreDatabase
+Backend service with a **RESTful API** architecture, based on **Flask**. With implemented PostgreDatabase
 using SQLAlchemy ORM, Redis database with RQ workers, Gunicorn workers, 
 JWT authentication and Migration with Alembic. The web service containerized using Docker and Doker Compose.
 
