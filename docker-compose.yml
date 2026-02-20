@@ -1,0 +1,46 @@
+services:
+  web1:
+    build: .
+    ports:
+      - "8000:80"
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:80/healthcheck || exit 1"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    depends_on:
+      - db
+      - redis-db
+    env_file:
+      - ./.env
+
+  db:
+    image: postgres:16
+    ports:
+      - "5800:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  worker:
+    build: .
+    entrypoint: ["rq"]
+    command: ["worker", "heavy_task"]
+    restart: always
+    depends_on:
+      - redis-db
+    env_file:
+      - ./.env
+
+  redis-db:
+    image: redis:7
+    restart: always
+
+volumes:
+  postgres_data:
