@@ -1,7 +1,7 @@
 ### Description
 Backend service with **RESTful API** architecture. With implemented PostgreDatabase
 using SQLAlchemy ORM, Redis database with RQ workers, Gunicorn workers, 
-JWT authentication. The web service containerized using Docker and Doker Compose.
+JWT authentication and Migration with Alembic. The web service containerized using Docker and Doker Compose.
 
 ### How to setup
 
