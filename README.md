@@ -21,5 +21,5 @@ to delete everything use ````docker compose -p ship down -v --rmi all````
 (you will delete volumes, images, and containers)
 
 
-:bangbang: All information that are in .env file is fake, it were loaded for demonstrative purposes only.
- Databases are creating locally, Postgres with volume and Redis in memory.
+:bangbang: All information in the .env file is fake, it is provided for demonstrative purposes only.
+ The databases are created locally, Postgres with a volume and Redis runs in memory.
