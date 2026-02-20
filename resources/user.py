@@ -70,8 +70,6 @@ class User(MethodView):
         user = UserModel.query.get_or_404(user_id)
         return user
 
-
-    @jwt_required(fresh=True)
     @admin_required
     def delete(self, user_id):
         user = UserModel.query.get_or_404(user_id)
